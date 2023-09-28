@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6fp0hs0mc7ij"]
+
+[ext_resource type="Script" path="res://FPSHandler.gd" id="1_7qnko"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_110nj"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="hints" type="Label" parent="CanvasLayer"]
+offset_top = 564.0
+offset_right = 238.0
+offset_bottom = 720.0
+text = "Controls: 
+> \"W\", \"A\", \"S\" and \"D\" to move
+> \"Space\" to jump
+> \"Shift\" to sprint
+> \"Q\" to unlock mouse
+> \"ESC\" to close the demo"
+label_settings = SubResource("LabelSettings_110nj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fpsCounter" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS: 60"
+label_settings = SubResource("LabelSettings_110nj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_7qnko")

@@ -1,9 +1,14 @@
 extends Node3D
 
-# Called when the node enters the scene tree for the first time.
+@export var exitKeybind = KEY_ESCAPE
+
 func _ready():
 	get_window().title = "3D Player Controller Demo"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == exitKeybind:
+			get_tree().quit(0)

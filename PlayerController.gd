@@ -21,6 +21,8 @@ const BASE_FOV = 75.0
 const MOVE_FOV = 1.5
 
 var mouseUnlocked = true
+var unlockKeybind = KEY_Q
+var cursorIcon = Resource.new()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -45,6 +47,8 @@ func _updateMouse():
 func _ready():
 	camera.fov = BASE_FOV
 	mouseUnlocked = false
+	cursorIcon.set("res://CursorDot.png", Input.CURSOR_ARROW)
+	Input.set_custom_mouse_cursor(cursorIcon, Input.CURSOR_ARROW, Vector2(0, 0))
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and not mouseUnlocked:
@@ -53,7 +57,7 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(LOOK_MIN), deg_to_rad(LOOK_MAX))
 		
 	if event is InputEventKey:
-			if event.pressed and event.keycode == KEY_ESCAPE:
+			if event.pressed and event.keycode == unlockKeybind:
 				mouseUnlocked = not mouseUnlocked
 
 func _physics_process(delta):
