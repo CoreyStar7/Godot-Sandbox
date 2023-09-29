@@ -3,8 +3,6 @@ extends CharacterBody3D
 var SPEED
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
-
-# This is a var due to being potentially modified via ice physics!
 var STOP_MOMENTUM = 4.0
 
 const JUMP_VELOCITY = 4.5
@@ -22,7 +20,6 @@ const MOVE_FOV = 1.5
 
 var mouseUnlocked = true
 var unlockKeybind = KEY_Q
-var cursorIcon = Resource.new()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -47,8 +44,6 @@ func _updateMouse():
 func _ready():
 	camera.fov = BASE_FOV
 	mouseUnlocked = false
-	cursorIcon.set("res://CursorDot.png", Input.CURSOR_ARROW)
-	Input.set_custom_mouse_cursor(cursorIcon, Input.CURSOR_ARROW, Vector2(0, 0))
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and not mouseUnlocked:
